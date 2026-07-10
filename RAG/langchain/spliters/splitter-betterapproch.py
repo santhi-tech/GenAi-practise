@@ -3,6 +3,7 @@ from langchain_community.document_loaders import ( TextLoader,
                                                   PyPDFLoader,
                                                   CSVLoader)
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from datetime import datetime
 
 folder = r"C:\Users\santhi.bhogavalli\Downloads"
 LOADERS = {
@@ -38,4 +39,5 @@ for file in os.listdir(folder):
     if loader is None:
         continue
     docs = loader.load_and_split(split)
+    metadata = docs.metadata["date"] = datetime.datetime.now()
     print(docs[0].page_content)
