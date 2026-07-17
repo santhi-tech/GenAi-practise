@@ -7,8 +7,10 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(
 logger = logging.getLogger(__name__)
 
 llm = get_model_llm()
-
-image = convert_base64("./Maths-Book/images/page_1_image_2.jpeg")
+images = os.path.join("./Maths-Book/images/")
+for i in images:
+    print(i)
+    image = convert_base64(i)
 
 prompt = ChatPromptTemplate.from_messages(
     [
